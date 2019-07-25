@@ -1,0 +1,25 @@
+{
+  "name": "study-webpack",
+  "version": "1.0.0",
+  "description": "'webpack4'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daylilytt/study-webpack.git"
+  },
+  "author": "\"daylilytt\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daylilytt/study-webpack/issues"
+  },
+  "homepage": "https://github.com/daylilytt/study-webpack#readme",
+  "devDependencies": {
+    "webpack": "^4.37.0",
+    "webpack-cli": "^3.3.6"
+  }
+}
