@@ -11,4 +11,7 @@ npm install
 ``` bash
 # 集成命令
 npm run cli
-```
+
+## 启动项目
+
+npm run start
