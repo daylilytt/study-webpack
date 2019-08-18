@@ -1,1 +1,12 @@
 node_modules/
+.DS_Store
+dist/
+npm-debug.log
+.build
+.project
+.vscode
+.package-lock
+debug.log
+.yarn
+yarn.lock
+yarn-error.log
