@@ -1,6 +1,6 @@
 import './index.less';
 import './index.css';
-console.log('public123');
+console.log('public');
 
 var div = document.createElement("div");
 div.innerHTML = '<h2>本地服务器测试</h2>';

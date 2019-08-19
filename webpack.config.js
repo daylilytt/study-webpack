@@ -1,6 +1,9 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MinicCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
 module.exports = {
   entry: ["./public/index.js"],
   output: {
@@ -16,9 +19,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        test:/\.css$/,
+        use: [MinicCssExtractPlugin.loader, 'css-loader']
       },
+      // {
+      //   test: /\.css$/,
+      //   use: ["style-loader", "css-loader"]
+      // },
       {
         test: /\.less$/,
         use: [
@@ -69,7 +76,7 @@ module.exports = {
     // ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin({  //设置html模板和配置
       template: "./public/index.html",
       filename: "webpack.html",
       minify: {
@@ -82,6 +89,19 @@ module.exports = {
         removeEmptyElements: true //清楚内容为空的元素
       },
       hash: true //引入产出资源的时候加上哈希，避免缓存
+    }),
+    new MinicCssExtractPlugin({  //提取分离css
+      filename: './css/index.css'
+    }),
+    new OptimizeCssAssetsPlugin({  //压缩css
+      assetNameRegExp: /\.css$/g, //正则表达式，用于匹配优化或者要压缩的资源名，默认值是/\.css$/g
+      cssProcessor: require('cssnano'), //用于压缩和优化css的处理器，默认cssnano
+      cssProcessorPluginOptions: { //传递给cssProcessor的插件选项，默认为{}
+        preset: ['default', 
+          {discardComments: {removeAll: true} //去除注释
+        }]
+      },
+      canPrint: true //表示插件能够在console中打印信息，默认值为true
     })
   ]
 };
